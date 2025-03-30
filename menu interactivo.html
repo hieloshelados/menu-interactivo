@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -66,12 +67,15 @@
       font-size: 18px;
       color: #5a3d2b;
       font-style: italic;
+      text-align: left;
+    }
+    .result b {
+      color: #4a2c1f;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Agrega el logo aquí -->
     <img src="https://i.imgur.com/t26a2vd.jpeg" alt="Logo de la cafetería" class="logo">
     <h1>¿Cómo te sientes hoy?</h1>
     <select id="emotion">
@@ -89,30 +93,35 @@
   <script>
     function suggestCoffee() {
       const emotion = document.getElementById("emotion").value;
+      let message = "";
       let suggestion = "";
 
       switch (emotion) {
         case "feliz":
-          suggestion = "Un café latte con un toque de vainilla para celebrar tu felicidad.";
+          message = "Veo que estás feliz, ¡qué maravilla! Para seguir con esa felicidad te recomiendo lo siguiente:";
+          suggestion = "<ul><li><b>Café Latte Vainilla</b> - Suave y cremoso. Precio: $3.500</li><li><b>Capuchino Clásico</b> - Espumoso y reconfortante. Precio: $3.800</li><li><b>Brownie de Chocolate</b> - Para hacer tu día aún más dulce. Precio: $2.500</li></ul>";
           break;
         case "triste":
-          suggestion = "Un capuchino para reconfortarte y mejorar tu ánimo.";
+          message = "Veo que estás triste. Un buen café puede ser justo lo que necesitas para reconfortarte.";
+          suggestion = "<ul><li><b>Capuchino Caramelo</b> - Un toque dulce para levantar el ánimo. Precio: $3.900</li><li><b>Mocha</b> - Chocolate y café, la combinación perfecta. Precio: $4.200</li><li><b>Cheesecake de Frambuesa</b> - Suave y delicioso. Precio: $3.000</li></ul>";
           break;
         case "cansado":
-          suggestion = "Un espresso doble para llenarte de energía.";
+          message = "Te noto cansado. Nada como una dosis de energía para recargarte.";
+          suggestion = "<ul><li><b>Espresso Doble</b> - Potente y directo. Precio: $2.800</li><li><b>Flat White</b> - Perfecto equilibrio entre espresso y leche. Precio: $3.600</li><li><b>Medialuna Dulce</b> - Ligera y deliciosa. Precio: $2.200</li></ul>";
           break;
         case "estresado":
-          suggestion = "Un café descafeinado con leche para ayudarte a relajarte.";
+          message = "Parece que el estrés te acompaña hoy. Relájate con estas opciones.";
+          suggestion = "<ul><li><b>Café Descafeinado con Leche</b> - Suave y sin cafeína. Precio: $3.500</li><li><b>Chai Latte</b> - Aromático y relajante. Precio: $3.800</li><li><b>Galletas de Avena y Miel</b> - Un toque dulce y natural. Precio: $2.000</li></ul>";
           break;
         case "relajado":
-          suggestion = "Un cold brew refrescante para mantener esa calma.";
+          message = "¡Qué bien! Mantén esa sensación con estas deliciosas opciones.";
+          suggestion = "<ul><li><b>Cold Brew</b> - Refrescante y suave. Precio: $4.000</li><li><b>Affogato</b> - Espresso con helado, una delicia. Precio: $4.500</li><li><b>Tarta de Manzana</b> - Ligera y reconfortante. Precio: $3.200</li></ul>";
           break;
         default:
-          suggestion = "Por favor, selecciona una emoción.";
+          message = "Por favor, selecciona una emoción.";
       }
 
-      // Mostrar el resultado en el contenedor
-      document.getElementById("result").textContent = suggestion;
+      document.getElementById("result").innerHTML = `<p>${message}</p>${suggestion}`;
     }
   </script>
 </body>
